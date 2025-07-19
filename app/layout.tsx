@@ -4,6 +4,7 @@ import "./globals.css";
 import {
   ClerkProvider
 } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +29,13 @@ export default function RootLayout({
   return (
     <ClerkProvider afterSignOutUrl={"/"}>
 
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-          {children}
+        >
+          <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

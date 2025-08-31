@@ -13,15 +13,17 @@ interface RootPageProps{
 
 const RootPage = async ({searchParams}:RootPageProps) => {
 
+    const params = await searchParams;
+
     const data = await prismadb.companion.findMany({
         where:{
-            ...( searchParams.categoryId && {
-                categoryId: Number(searchParams.categoryId)
+            ...( params.categoryId && {
+                categoryId: Number(params.categoryId)
             }),
             
-        ...( searchParams.name && {
+        ...( params.name && {
             name:{
-                search: searchParams.name
+                search: params.name
             }
         })
 

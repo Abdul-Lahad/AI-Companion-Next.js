@@ -41,8 +41,10 @@ const ChatClient = ({companion}:ChatClientProps) => {
             }
 
             setMessages((current) => [...current, systemMessage]);
+            
+            
             setInput("");
-
+            
             route.refresh()
 
         }

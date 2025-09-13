@@ -17,10 +17,12 @@ const CompanionIdPage = async ({params}: CompanionIdPageProps) => {
         if(!userId){
             return <RedirectToSignIn />
         }
+
+       const companionId = await params.companionId
         
     const companion = await prismadb.companion.findUnique({
         where:{
-            id: params.companionId,
+            id: companionId, 
             userId
         }
     })

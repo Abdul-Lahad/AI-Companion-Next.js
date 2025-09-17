@@ -23,9 +23,9 @@ const ChatMessages = ({ messages, companion, isLoading }: ChatMessagesProps) => 
 
     return ( 
         <div className="flex-1 overflow-y-auto pr-4">
-            {messages.map((message) => (
+            {messages.map((message,id) => (
                 <ChatMessage
-                    key={message.content}
+                    key={id}
                     src={companion.src}
                     role={message.role}
                     isLoading={isLoading}

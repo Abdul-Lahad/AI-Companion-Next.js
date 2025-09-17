@@ -35,6 +35,10 @@ const ChatClient = ({companion}:ChatClientProps) => {
     } = useCompletion({
         api: `/api/chat/${companion.id}`,
         onFinish(prompt,completion){
+
+            console.log("Completion received: ", completion);
+            console.log("Prompt sent: ", prompt);
+
             const systemMessage: ChatMessageProps = {
                 role: "system",
                 content: completion
@@ -43,7 +47,7 @@ const ChatClient = ({companion}:ChatClientProps) => {
             setMessages((current) => [...current, systemMessage]);
             
 
-            route.refresh()
+            // route.refresh()
 
         }
     })
